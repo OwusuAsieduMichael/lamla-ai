@@ -1,0 +1,1 @@
+export { inspectAcademicImage } from "./inspect";

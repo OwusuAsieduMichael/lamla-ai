@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# LAMLA AI
 
-## Getting Started
+LAMLA AI is a student-centered academic intelligence web application.
 
-First, run the development server:
+The current pilot is limited to KNUST, College of Science, Faculty of Physical and Computational Sciences, Department of Computer Science, BSc Computer Science.
+
+This repository is in **Phase 16 — KNUST web pilot**. New visitors see a three-tab welcome, then sign-up or sign-in, then the homepage. Workspaces for Ask, Sources, Vision, Voice, Learn, and Questions are present. The academic corpus is empty, so the app refuses instead of inventing KNUST material.
+
+## What is in the tree
+
+- Next.js App Router foundation and KNUST-aligned visual tokens
+- Academic schema, RLS, authorization, ingestion, retrieval, and learning tables
+- Manifest contracts and empty collection folders
+- Grounded Ask that retrieves authorized chunks before it may call a provider
+- Vision, voice, learning, and past-question surfaces that stay empty without sources
+- Student sign-in, sign-up, and account pages (Supabase Auth; no invented KNUST identity)
+- Architecture, security, deployment, pitch, and expansion documentation
+
+## Requirements
+
+- Node.js 20 or later
+- npm
+
+## Local setup
 
 ```bash
+npm install
+cp .env.example .env.local
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Supabase and AI provider values are optional for viewing the workspaces. They are required before applying migrations or generating an answer from retrieved sources.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Scripts
 
-## Learn More
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Development server |
+| `npm run build` | Production build |
+| `npm run lint` | ESLint |
+| `npm run typecheck` | TypeScript |
+| `npm test` | Vitest |
+| `npm run evaluate` | Grounding evaluation |
+| `npm run test:e2e` | Playwright |
+| `npm run check:env` | Report whether known env names are set (values are not printed) |
+| `npm run validate:manifests` | Validate collection manifests (zero files is valid) |
+| `npm run ingest` | Report whether any authorized files are eligible to ingest |
 
-To learn more about Next.js, take a look at the following resources:
+## Documentation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Architecture](docs/architecture.md)
+- [Data architecture](docs/data-architecture.md)
+- [Dataset engineering](docs/dataset-engineering.md)
+- [Document ingestion](docs/ingestion.md)
+- [Security baseline](docs/security.md)
+- [Deployment](docs/deployment.md)
+- [Pitch notes](docs/pitch.md)
+- [KNUST expansion](docs/expansion.md)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Development rule
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Do not invent KNUST course data, lecture notes, or placeholder answers. Empty authorized tables and a refusal are the correct state until real sources are granted.
