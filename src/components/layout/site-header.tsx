@@ -3,7 +3,6 @@ import Link from "next/link";
 import { AuthNav } from "./auth-nav";
 import { HideOnWelcome } from "./hide-on-welcome";
 import { ThemeToggle } from "./theme-toggle";
-import { WorkspaceNav } from "./workspace-nav";
 import { appConfig } from "@/config/app";
 import { getAuthSession } from "@/lib/auth";
 
@@ -33,7 +32,6 @@ export async function SiteHeader() {
           aria-label="Primary"
           className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm"
         >
-          <WorkspaceNav />
           <HideOnWelcome>
             <AuthNav session={session} />
           </HideOnWelcome>

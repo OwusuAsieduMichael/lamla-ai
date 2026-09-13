@@ -22,7 +22,7 @@ This document describes the academic schema. It is not a claim that course catal
 - Chunk / embedding tables
 - Ingestion, retrieval, or RAG
 - Auth UI or a mounted session middleware
-- Student dashboard screens
+- Student dashboard data (the `/dashboard` route exists and stays empty until authorized rows exist)
 
 ## Entity model
 

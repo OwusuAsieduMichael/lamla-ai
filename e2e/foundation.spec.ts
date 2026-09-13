@@ -29,10 +29,20 @@ test("sign-in page is available", async ({ page }) => {
 });
 
 test("ask workspace refuses invented answers", async ({ page }) => {
-  await page.goto("/ask");
+  await page.goto("/workspace");
 
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
-    "Text workspace",
+    "AI workspace",
   );
   await expect(page.getByText("refuses when none exist")).toBeVisible();
+});
+
+test("dashboard and catalog pages stay honest when empty", async ({ page }) => {
+  await page.goto("/dashboard");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Dashboard");
+
+  await page.goto("/courses");
+  await expect(
+    page.getByText("does not invent KNUST Computer Science modules"),
+  ).toBeVisible();
 });

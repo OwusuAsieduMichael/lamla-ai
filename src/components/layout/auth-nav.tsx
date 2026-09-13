@@ -13,7 +13,7 @@ export function AuthNav({ session }: AuthNavProps) {
     return (
       <div className="flex flex-wrap items-center gap-2">
         <Button asChild variant="ghost" size="sm">
-          <Link href="/account">{session.profile?.displayName ?? "Account"}</Link>
+          <Link href="/profile">{session.profile?.displayName ?? "Profile"}</Link>
         </Button>
         <form action={signOutAction}>
           <Button type="submit" variant="outline" size="sm">

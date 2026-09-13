@@ -158,6 +158,58 @@ type LearningEventRow = {
   created_at: string;
 };
 
+type WorkspaceChannel = "text" | "voice" | "image";
+
+type ConversationRow = {
+  id: string;
+  profile_id: string;
+  title: string;
+} & Timestamps;
+
+type ConversationMessageRow = {
+  id: string;
+  conversation_id: string;
+  profile_id: string;
+  role: "user" | "assistant";
+  content: string;
+  channel: WorkspaceChannel;
+  mode: string;
+  refused: boolean;
+  reason: string | null;
+  created_at: string;
+};
+
+type ConversationSourceRow = {
+  id: string;
+  message_id: string;
+  chunk_id: string | null;
+  source_title: string;
+  source_attribution: string;
+  excerpt: string | null;
+  created_at: string;
+};
+
+type SavedItemRow = {
+  id: string;
+  profile_id: string;
+  kind: "response" | "resource";
+  title: string;
+  body: string;
+  resource_id: string | null;
+  conversation_message_id: string | null;
+  created_at: string;
+};
+
+type QueryHistoryRow = {
+  id: string;
+  profile_id: string;
+  query: string;
+  channel: WorkspaceChannel;
+  mode: string;
+  refused: boolean;
+  created_at: string;
+};
+
 type PastQuestionItemRow = {
   id: string;
   past_question_id: string;
@@ -540,6 +592,118 @@ export type Database = {
           },
         ];
       };
+      conversations: {
+        Row: ConversationRow;
+        Insert: {
+          id?: string;
+          profile_id: string;
+          title: string;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: Partial<ConversationRow>;
+        Relationships: [
+          {
+            foreignKeyName: "conversations_profile_id_fkey";
+            columns: ["profile_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      conversation_messages: {
+        Row: ConversationMessageRow;
+        Insert: {
+          id?: string;
+          conversation_id: string;
+          profile_id: string;
+          role: "user" | "assistant";
+          content: string;
+          channel?: WorkspaceChannel;
+          mode?: string;
+          refused?: boolean;
+          reason?: string | null;
+          created_at?: string;
+        };
+        Update: Partial<ConversationMessageRow>;
+        Relationships: [
+          {
+            foreignKeyName: "conversation_messages_conversation_id_fkey";
+            columns: ["conversation_id"];
+            isOneToOne: false;
+            referencedRelation: "conversations";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      conversation_sources: {
+        Row: ConversationSourceRow;
+        Insert: {
+          id?: string;
+          message_id: string;
+          chunk_id?: string | null;
+          source_title: string;
+          source_attribution: string;
+          excerpt?: string | null;
+          created_at?: string;
+        };
+        Update: Partial<ConversationSourceRow>;
+        Relationships: [
+          {
+            foreignKeyName: "conversation_sources_message_id_fkey";
+            columns: ["message_id"];
+            isOneToOne: false;
+            referencedRelation: "conversation_messages";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      saved_items: {
+        Row: SavedItemRow;
+        Insert: {
+          id?: string;
+          profile_id: string;
+          kind: "response" | "resource";
+          title: string;
+          body: string;
+          resource_id?: string | null;
+          conversation_message_id?: string | null;
+          created_at?: string;
+        };
+        Update: Partial<SavedItemRow>;
+        Relationships: [
+          {
+            foreignKeyName: "saved_items_profile_id_fkey";
+            columns: ["profile_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      query_history: {
+        Row: QueryHistoryRow;
+        Insert: {
+          id?: string;
+          profile_id: string;
+          query: string;
+          channel?: WorkspaceChannel;
+          mode?: string;
+          refused?: boolean;
+          created_at?: string;
+        };
+        Update: Partial<QueryHistoryRow>;
+        Relationships: [
+          {
+            foreignKeyName: "query_history_profile_id_fkey";
+            columns: ["profile_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
     };
     Views: Record<string, never>;
     Functions: {
@@ -568,6 +732,7 @@ export type Database = {
       resource_status: ResourceStatus;
       authorization_status: AuthorizationStatus;
       ingestion_job_status: IngestionJobStatus;
+      workspace_channel: WorkspaceChannel;
     };
     CompositeTypes: Record<string, never>;
   };

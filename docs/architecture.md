@@ -78,16 +78,18 @@ docs/                 Architecture, data, security, deploy, pitch, expansion
 | Route | Mode |
 | --- | --- |
 | `/welcome` | Three-tab introduction before auth |
-| `/` | Pilot home after welcome and sign-in |
-| `/ask` | Text workspace |
-| `/sources` | Authorized source library |
-| `/vision` | Image inspection gate |
-| `/voice` | Browser speech plus the same ask engine |
+| `/` | Pilot landing after welcome |
+| `/dashboard` | Student hub with honest empty counts |
+| `/workspace` | Text, voice, and image on one grounded engine |
+| `/courses` | Authorized catalogue only |
+| `/resources` | Granted source library |
+| `/questions` | Attributed past papers with filters |
 | `/learn` | Importance-ranked study guidance |
-| `/questions` | Attributed past papers |
+| `/saved` | Owner-scoped bookmarks |
+| `/history` | Owner-scoped query history |
+| `/profile` | Signed-in profile |
 | `/login` | Student sign in |
 | `/signup` | Student account creation |
-| `/account` | Signed-in profile |
 
 ## Development phases
 
@@ -100,12 +102,12 @@ docs/                 Architecture, data, security, deploy, pitch, expansion
 | 4 | Retrieval engine | Lexical rank plus authorized DB load |
 | 5 | Academic importance | Scoring helper; stored scores optional |
 | 6 | RAG and grounded AI | Refusal first; live provider only with a key |
-| 7 | Text workspace | `/ask` |
-| 8 | Computer vision | Gated; no invented readings |
+| 7 | Text workspace | `/workspace` with follow-up, modes, sources, save |
+| 8 | Computer vision | Gated; exact / likely / none, no invented readings |
 | 9 | Voice interaction | Browser speech; server transcription optional |
-| 10 | Learning engine | Recommendations from authorized chunks only |
-| 11 | Past question intelligence | Attributed papers only |
-| 12 | Web application UI | Pilot workspaces |
+| 10 | Learning engine | Mode prompts plus `learning_events` when signed in |
+| 11 | Past question intelligence | Attributed papers and filters |
+| 12 | Web application UI | Dashboard, catalog, saved, history, profile |
 | 13 | Security hardening | Headers, rate limits, RLS |
 | 14 | Testing and evaluation | Vitest plus grounding eval |
 | 15 | Deployment and pitch | Docs only until a project is hosted |

@@ -32,7 +32,7 @@ npm run evaluate
 npm run build
 ```
 
-Playwright (`npm run test:e2e`) needs a local browser install. HTTP checks of `/`, `/ask`, `/sources`, `/vision`, `/voice`, `/learn`, and `/questions` are enough when browsers are unavailable.
+Playwright (`npm run test:e2e`) needs a local browser install. HTTP checks of `/`, `/dashboard`, `/workspace`, `/courses`, `/resources`, `/questions`, `/learn`, `/saved`, and `/history` are enough when browsers are unavailable.
 
 ## Pitch constraint
 

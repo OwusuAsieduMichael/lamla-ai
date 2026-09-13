@@ -5,8 +5,8 @@ export type PastQuestionSummary = {
   sourceAttribution: string;
 };
 
-export function summarizePastQuestions(
-  papers: PastQuestionSummary[],
-): PastQuestionSummary[] {
+export function summarizePastQuestions<T extends PastQuestionSummary>(
+  papers: T[],
+): T[] {
   return papers.filter((paper) => paper.sourceAttribution.trim().length > 0);
 }

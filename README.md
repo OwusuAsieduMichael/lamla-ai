@@ -4,7 +4,7 @@ LAMLA AI is a student-centered academic intelligence web application.
 
 The current pilot is limited to KNUST, College of Science, Faculty of Physical and Computational Sciences, Department of Computer Science, BSc Computer Science.
 
-This repository is in **Phase 16 — KNUST web pilot**. New visitors see a three-tab welcome, then sign-up or sign-in, then the homepage. Workspaces for Ask, Sources, Vision, Voice, Learn, and Questions are present. The academic corpus is empty, so the app refuses instead of inventing KNUST material.
+This repository is in **Phase 16 — KNUST web pilot**. New visitors see a three-tab welcome, then sign-up or sign-in, then the landing page. The student shell includes Dashboard, Workspace, Courses, Resources, Questions, Learn, Saved, History, and Profile. The academic corpus is empty, so the app refuses instead of inventing KNUST material.
 
 ## What is in the tree
 
@@ -13,7 +13,7 @@ This repository is in **Phase 16 — KNUST web pilot**. New visitors see a three
 - Manifest contracts and empty collection folders
 - Grounded Ask that retrieves authorized chunks before it may call a provider
 - Vision, voice, learning, and past-question surfaces that stay empty without sources
-- Student sign-in, sign-up, and account pages (Supabase Auth; no invented KNUST identity)
+- Student sign-in, sign-up, dashboard, workspace, catalog, saved, history, and profile pages (Supabase Auth; no invented KNUST identity)
 - Architecture, security, deployment, pitch, and expansion documentation
 
 ## Requirements

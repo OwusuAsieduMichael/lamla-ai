@@ -53,10 +53,10 @@ export function HomePage({ capabilities }: HomePageProps) {
           </div>
           <div className="flex flex-wrap gap-3">
             <Button asChild>
-              <Link href="/ask">Open Ask</Link>
+              <Link href="/workspace">Open workspace</Link>
             </Button>
             <Button asChild variant="outline">
-              <Link href="/sources">View sources</Link>
+              <Link href="/dashboard">Dashboard</Link>
             </Button>
             <Button asChild variant="ghost">
               <Link href="/login">Sign in</Link>
@@ -88,9 +88,7 @@ export function HomePage({ capabilities }: HomePageProps) {
         </section>
 
         <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {appNavigation
-            .filter((item) => item.href !== "/")
-            .map((item) => (
+          {appNavigation.map((item) => (
               <Card key={item.href}>
                 <CardHeader>
                   <CardTitle>
@@ -99,8 +97,8 @@ export function HomePage({ capabilities }: HomePageProps) {
                     </Link>
                   </CardTitle>
                   <CardDescription>
-                    Workspace route for the {item.label.toLowerCase()} mode.
-                    It stays honest when data or keys are absent.
+                    Open {item.label.toLowerCase()}. Empty authorized data
+                    stays empty.
                   </CardDescription>
                 </CardHeader>
               </Card>

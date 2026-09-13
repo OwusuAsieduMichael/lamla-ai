@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import type { ReactNode } from "react";
 
+import { AppSidebar } from "@/components/layout/app-sidebar";
 import { SiteHeader } from "@/components/layout/site-header";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { appConfig } from "@/config/app";
@@ -53,7 +54,10 @@ export default function RootLayout({
           </a>
           <div className="flex min-h-full flex-col">
             <SiteHeader />
-            {children}
+            <div className="flex flex-1 flex-col md:flex-row">
+              <AppSidebar />
+              <div className="flex min-w-0 flex-1 flex-col">{children}</div>
+            </div>
           </div>
         </ThemeProvider>
       </body>

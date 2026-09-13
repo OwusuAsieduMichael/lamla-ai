@@ -11,13 +11,13 @@ import {
 } from "@/components/ui/card";
 import { getAuthSession } from "@/lib/auth";
 
-export default async function AccountPage() {
+export default async function ProfilePage() {
   const session = await getAuthSession();
 
   if (!session.configured) {
     return (
       <PageShell
-        title="Account"
+        title="Profile"
         description="Your signed-in profile. Role and programme stay staff-controlled."
       >
         <CapabilityNote
@@ -29,12 +29,12 @@ export default async function AccountPage() {
   }
 
   if (!session.email) {
-    redirect("/login?next=/account");
+    redirect("/login?next=/profile");
   }
 
   return (
     <PageShell
-      title="Account"
+      title="Profile"
       description="Your signed-in profile. Role and programme stay staff-controlled."
     >
       <Card>
